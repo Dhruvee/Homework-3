@@ -1,0 +1,46 @@
+
+class Ball{
+  float x,y;
+  float vx,vy;
+  int a,b,c;
+  int rad;
+  
+  Ball(){
+    x= random(width-40);
+    y=random(height-40);
+    vx= random(10);
+    vy=random(8);
+  rad=40;}
+
+    void draw(int a,int b,int c){
+      noStroke();
+      fill(a,b,c);
+      ellipse(x,y,rad,rad);}
+    void bounce(){
+      x=x+vx;
+      if(x>width-rad||x<rad){
+        vx*=-1;}
+        y=y+vy;
+        if(y>height-rad||y<rad){
+          vy*=-1;}}
+}
+
+Ball b1;
+Ball b2;
+ void setup(){
+   size(500,500);
+   colorMode(HSB,360,100,100);
+   
+   b1=new Ball();
+   b2=new Ball();
+ }
+  void draw(){
+    background(0);
+  
+    
+    b1.draw(145,91,85);
+    b1.bounce();
+    b2.draw(174,84,91);
+    b2.bounce();
+  }
+
