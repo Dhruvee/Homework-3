@@ -1,0 +1,59 @@
+class Ball {
+  float x, y;
+  float vx, vy;
+  float radius;
+  float hue;
+
+  Ball() {
+     x = random(width);
+    y = random(height);
+    radius = 20;
+    vx = random(10);
+    vy = random(8);
+    hue=random(360);
+    
+    }
+   
+
+  void draw() {
+    noStroke();
+    fill(hue,100,100);
+    ellipse(x, y, radius*2, radius*2);
+  }
+void mousePressed(){
+  this.x=mouseX;
+  this.y=mouseY;}
+
+  void move() {
+    x = x + vx;
+    y = y + vy;
+    if (x < radius || x > width-radius) {
+      vx = -vx;
+    }
+    if (y < radius || y > height-radius) {
+      vy = -vy;
+    }
+  }
+}
+
+Ball b;
+Ball b1;
+void setup() {
+  size(500, 500);
+
+  b = new Ball();
+  b1=new Ball();
+}
+
+void draw() {
+ 
+  background(255);
+if(mousePressed==true){
+  b.mousePressed();}
+     b.draw();
+  b.move();
+ 
+     b1.draw();
+  b1.move();
+}
+
